@@ -1,6 +1,6 @@
 # Payment Service with Java and Spring Boot
 
-Welcome to the Payment Service developed in Java using Spring Boot! This project provides a comprehensive payment system where you can manage clients, their payment details, addresses, and products with quantities in store. The application includes CRUD operations for clients and products, along with relationships between clients, addresses, payments, and products.
+Welcome to the Payment Service developed in Java using Spring Boot! This project provides a comprehensive payment system where you can manage clients, their payment details, addresses, and products with quantities in store. The application includes CRUD operations for clients and products, as well as relationships between clients, addresses, payments, and products.
 
 ## Features
 - Java and Spring Boot-based payment service.
@@ -65,8 +65,5 @@ If you would like to contribute to the project, please follow the standard GitHu
 3. Make changes and commit them with descriptive messages.
 4. Push your branch to your fork.
 5. Open a pull request with a detailed explanation of your changes.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 Feel free to explore the code, contribute improvements, or use it as a starting point for your own projects. Happy coding!
