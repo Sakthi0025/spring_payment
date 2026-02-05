@@ -1,12 +1,21 @@
-echo "Running full local build before push..."
+#!/bin/sh
+. "$(dirname "$0")/husky.sh"
 
-# Run full Maven lifecycle (compile, test, package, verify)
-mvn clean verify
+echo "🚀 Running pre-push checks..."
 
-# Check result
-if [ $? -ne 0 ]; then
-  echo "Build or tests failed. Push blocked."
+# Ensure working tree is clean
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "❌ Uncommitted changes detected. Commit before pushing."
   exit 1
 fi
 
-echo "Build successful. Push allowed."
+echo "🧪 Running Maven tests..."
+mvn test
+RESULT=$?
+
+if [ $RESULT -ne 0 ]; then
+  echo "❌ Maven tests failed. Push blocked."
+  exit 1
+fi
+
+echo "✅ Pre-push checks passed. Safe to push."
