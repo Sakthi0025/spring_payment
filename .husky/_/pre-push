@@ -1,0 +1,21 @@
+#!/bin/sh
+. "$(dirname "$0")/husky.sh"
+
+echo "🚀 Running pre-push checks..."
+
+# Ensure working tree is clean
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "❌ Uncommitted changes detected. Commit before pushing."
+  exit 1
+fi
+
+echo "🧪 Running Maven tests..."
+mvn test
+RESULT=$?
+
+if [ $RESULT -ne 0 ]; then
+  echo "❌ Maven tests failed. Push blocked."
+  exit 1
+fi
+
+echo "✅ Pre-push checks passed. Safe to push."

@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/husky.sh"
+
+echo "🔍 Running pre-commit checks..."
+
+npx secretlint "**/*"
+
+echo "✅ Pre-commit checks passed"
